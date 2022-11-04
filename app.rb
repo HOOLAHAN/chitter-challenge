@@ -13,6 +13,3 @@
 # result.each do |record|
 #   p record
 # end
-
-time = Time.now
-puts time

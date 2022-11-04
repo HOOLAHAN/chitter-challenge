@@ -104,7 +104,7 @@ end
 # Table name: 
 # Model class
 # (in lib/peeps.rb)
-class Peeps
+class Peep
   attr_accessor :id, :timestamp, :content, :user_id
 end
 
@@ -136,7 +136,7 @@ class UserRepository
   # One argument: the id (number)
   def find(id)
     # Executes the SQL query:
-    # SELECT id, name, email, username FROM users WHERE id = $1;
+    # SELECT id, name, email, username, password FROM users WHERE id = $1;
     # Returns a single User object.
   end
 
@@ -185,11 +185,11 @@ class PeepRepository
     # Returns nothing
   end
 
-  def update(peep)
-    # Executes the SQL query:
-    # 'UPDATE users SET timestamp = $1, content = $2, user_id_ = $3 WHERE id = $5;'
-    # Returns nothing
-  end
+  # def update(peep)
+  #   # Executes the SQL query:
+  #   # 'UPDATE peeps SET timestamp = $1, content = $2, user_id_ = $3 WHERE id = $5;'
+  #   # Returns nothing
+  # end
 
   def delete(peeps)
     # Executes the SQL query:
@@ -227,7 +227,7 @@ users[1].username # =>  'user_mary'
 users[1].password # =>  'mary123'
 
 # 2
-# Get a single student
+# Get a single user
 repo = UserRepository.new
 user = repo.find(1)
 user.id # =>  1
@@ -249,7 +249,7 @@ repo.create(new_user) # => nil
 
 users = repo.all
 last_user = users.last
-expect(last_user.username).to eq 'Harry Web'
+expect(last_user.name).to eq 'Harry Web'
 expect(last_user.email).to eq 'harry@test.com'
 expect(last_user.username).to eq 'user_harry'
 expect(last_user.password).to eq 'harry123'
@@ -293,7 +293,7 @@ peeps[0].content # =>  'A peep with some content'
 peeps[0].user_id # => 1
 peeps[1].id # =>  2
 peeps[1].timestamp # =>  '2022-01-02 18:30:10'
-peeps[1].content # =>  'A peep with some differentcontent'
+peeps[1].content # =>  'A peep with more differentcontent'
 peeps[1].user_id # => 1
 
 # 7 
@@ -307,7 +307,7 @@ peeps[1].user_id # => 1
 # 8
 # creates a peep
 repo = PeepRepository.new
-new_peep = Post.new
+new_peep = Peep.new
 new_peep.timestamp = '2022-11-04 15:41:00'
 new_peep.content = 'some new content'
 new_peep.user_id = '1'
@@ -359,7 +359,7 @@ end
 
 # file: spec/peep_repository_spec.rb
 def reset_peeps_table
-  seed_sql = File.read('spec/peeps.sql')
+  seed_sql = File.read('spec/seeds.sql')
   connection = PG.connect({ host: '127.0.0.1', dbname: 'chitter_challenge_test' })
   connection.exec(seed_sql)
 end

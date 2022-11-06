@@ -1,4 +1,7 @@
 # (in lib/user.rb)
+
 class User
-  attr_accessor :id, :name, :email, :username, :password
+
+  attr_accessor :id, :name, :email, :username, :password, :peeps
+
 end

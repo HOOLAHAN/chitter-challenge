@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <h1>Chitter</h1>
+    <% if session[:user_id] == nil %>
+      <a href="/login">Login to make a post</a>
+      <a href="/new_user">Create an account</a>
+    <% else %>
+      <a href="/feed/new">Post a new Peep</a><br />
+      <a href="/logout">Logout</a>
+    <% end %>
+  </head>
+  <hr />
+  <body>
+    <% @peeps.reverse.each do |peep| %>
+      <a href="/feed/<%= peep.id %>">View Peep</a>
+      <p><%= peep.content %></p>
+      <p>Posted at <%= peep.timestamp.split(' ').last.split(':').slice(0,2).join(':') %> 
+      on <%= peep.timestamp.split(' ').first %></p>
+      <hr />
+    <% end %>
+  </body>
+</html>

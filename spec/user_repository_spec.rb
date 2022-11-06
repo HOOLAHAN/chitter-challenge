@@ -1,9 +1,9 @@
 # File: spec/user_repository_spec.rb
 
-require 'user_repository'
-require 'user'
+require_relative '../lib/user_repository'
+require_relative '../lib/user'
 
-def reset_users_table
+def reset_tables
   seed_sql = File.read('spec/seeds.sql')
   connection = PG.connect({ host: '127.0.0.1', dbname: 'chitter_challenge_test' })
   connection.exec(seed_sql)
@@ -11,7 +11,7 @@ end
 
 describe UserRepository do
   before(:each) do 
-    reset_users_table
+    reset_tables
   end
   
   it 'Gets all users' do
@@ -30,9 +30,19 @@ describe UserRepository do
     expect(users[1].password).to eq 'mary123'
   end
 
-  it 'Gets a single user' do
+  it 'Gets a single user by id' do
     repo = UserRepository.new
     user = repo.find(1)
+    expect(user.id).to eq '1'
+    expect(user.name).to eq 'Simon Smith'
+    expect(user.email).to eq 'simon@test.com'
+    expect(user.username).to eq 'user_simon'
+    expect(user.password).to eq 'simon123'
+  end
+
+  it 'Gets a single user by email' do
+    repo = UserRepository.new
+    user = repo.find_by_email('simon@test.com')
     expect(user.id).to eq '1'
     expect(user.name).to eq 'Simon Smith'
     expect(user.email).to eq 'simon@test.com'
@@ -56,28 +66,27 @@ describe UserRepository do
     expect(last_user.password).to eq 'harry123'
   end
 
-  it 'deletes a user' do
-    repo = UserRepository.new
-    repo.delete(1)
-    result_set = repo.all
-    expect(result_set.length).to eq 2
-    expect(result_set.first.id).to eq '2'
-  end
-
   it 'updates a user' do
     repo = UserRepository.new
-    user = repo.find(1)
+    user = repo.find(3)
     user.name = 'Updated Name'
     user.email = 'updated@test.com'
     user.username = 'updated_user'
     user.password = 'updated_password'
     repo.update(user)
-    updated_user = repo.find(1)
+    updated_user = repo.find(3)
     expect(updated_user.email).to eq 'updated@test.com'
     expect(updated_user.username).to eq 'updated_user'
     expect(updated_user.name).to eq 'Updated Name'
     expect(updated_user.password).to eq 'updated_password'
   end
 
-end
+    it 'deletes a user' do
+    repo = UserRepository.new
+    repo.delete(4)
+    result_set = repo.all
+    expect(result_set.length).to eq 3
+    expect(result_set.last.id).to eq '3'
+  end
 
+end

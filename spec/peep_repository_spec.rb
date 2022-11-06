@@ -1,29 +1,31 @@
 # file: spec/peep_repository_spec.rb
 
-require 'peep_repository'
-require 'peep'
+require_relative '../lib/peep_repository'
+require_relative '../lib/peep'
+# require 'spec_helper'
 
-def reset_peeps_table
+def reset_tables
   seed_sql = File.read('spec/seeds.sql')
   connection = PG.connect({ host: '127.0.0.1', dbname: 'chitter_challenge_test' })
   connection.exec(seed_sql)
 end
+
 describe PeepRepository do
   before(:each) do 
-    reset_peeps_table
+    reset_tables
   end
   
   it 'Gets all peeps' do
     repo = PeepRepository.new
     peeps = repo.all
-    expect(peeps.length).to eq  8
-    expect(peeps[0].id).to eq  '1'
-    expect(peeps[0].timestamp).to eq  '2022-11-04 12:41:50'
-    expect(peeps[0].content).to eq  'A peep with some content'
+    expect(peeps.length).to eq 8
+    expect(peeps[0].id).to eq '1'
+    expect(peeps[0].timestamp).to eq '2022-11-04 12:41:50'
+    expect(peeps[0].content).to eq 'A peep with some content'
     expect(peeps[0].user_id).to eq '1'
-    expect(peeps[1].id).to eq  '2'
-    expect(peeps[1].timestamp).to eq  '2022-01-02 18:30:10'
-    expect(peeps[1].content).to eq  'A peep with some more content'
+    expect(peeps[1].id).to eq '2'
+    expect(peeps[1].timestamp).to eq '2022-01-02 18:30:10'
+    expect(peeps[1].content).to eq 'A peep with some more content'
     expect(peeps[1].user_id).to eq '1'
   end
 
@@ -32,7 +34,7 @@ describe PeepRepository do
     peeps = repo.find(1)
     expect(peeps.timestamp).to eq '2022-11-04 12:41:50'
     expect(peeps.content).to eq 'A peep with some content'
-    expect(peeps.user_id).to eq '1'
+    expect(peeps.user_id).to eq 1
   end
   
   it 'creates a peep' do
@@ -56,4 +58,5 @@ describe PeepRepository do
     expect(result_set.length).to eq 7
     expect(result_set.first.id).to eq '2'
   end
+
 end

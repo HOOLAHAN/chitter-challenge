@@ -80,7 +80,8 @@ class Application < Sinatra::Base
     @new_peep.timestamp = Time.new
     @new_peep.user_id = session[:user_id]
     repo.create(@new_peep)
-    return erb(:feed)
+    redirect '/'
+    # return erb(:feed)
   end
 
   get '/new_user' do

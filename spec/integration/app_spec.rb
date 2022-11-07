@@ -35,7 +35,7 @@ describe Application do
   context "POST /login" do
     it 'lets the user log in' do
       response = post('/login', email: 'simon@test.com', password: 'simon123')
-      expect(response.status).to eq (200)
+      expect(response.status).to eq (302)
       get_response = get('/feed')
       expect(get_response.status).to eq (200)
       expect(get_response.body).to include('Post a new Peep')
@@ -81,11 +81,12 @@ describe Application do
 
   context "POST /feed" do
     it "creates a new peep" do
-      
+      login_response = post('/login', email: 'simon@test.com', password: 'simon123')
+      expect(login_response.status).to eq (302)
       response = post('/feed', content: 'Test peep')
-      expect(response.status).to eq (200)
+      expect(response.status).to eq (302)
       get_response = get('/feed')
-      expect(get_response.body).to include ('<p>Test peep</p>')
+      expect(get_response.body).to include ('Test peep')
     end
   end
 

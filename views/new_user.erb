@@ -1,29 +1,43 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>Chitter</title>
-</head>
+  <head>
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body>
-      <form action="/new_user" method="POST">
-    <div>
-      <label>Please enter name</label>
-      <input type="text" name="name">
-    </div>
-    <div>
-      <label>Please enter email</label>
-      <input type="text" name="email">
-    </div>
-    <div>
-      <label>Please enter username</label>
-      <input type="text" name="username">
-    </div>
-    <div>
-      <label>Please enter password</label>
-      <input type="text" name="password">
-    </div>
-      <label>Create</label>
-      <input type="submit" />
-    </div>
-  </form>
-</body>
+    <header>
+      <nav>
+        <p>[ARKLE BNB]</p>
+        <div class="links__container">
+          <a class="link" href="/feed">Home</a>
+        </div>
+      </nav>
+      <section class="blurb">
+        <h1 class="blurb__header">Create an account</h1>
+        <p class="blurb__text">
+          Please enter the following details to set up a new account
+        </p>
+      </section>
+      <div class="form__container">
+        <h3 class="form__header">Account Details</h3>
+        <form class="form" action="/new_user" method="POST">
+          <label class="form__label" for="name">Please enter name</label
+          ><input class="form__input" type="text" name="name" />
+          <label class="form__label" for="email">Please enter email</label
+          ><input class="form__input" type="text" name="email" />
+          <label class="form__label" for="username">Please enter username</label
+          ><input class="form__input" type="text" name="username" />
+          <label class="form__label" for="password">Please enter password</label
+          ><input class="form__input" type="text" name="password" />
+          <input class="form__input form__submit" type="submit" value="Create" />
+        </form>
+      </div>
+    </header>
+  </body>
 </html>

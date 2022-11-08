@@ -1,17 +1,37 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>Chitter</title>
-</head>
+  <head>
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body>
-      <form action="/feed" method="POST">
-    <div>
-      <label>Write peep content</label>
-      <input type="text" name="content">
-    </div>
-      <label>Post peep</label>
-      <input type="submit" />
-    </div>
-  </form>
-</body>
+    <header>
+      <nav>
+        <p>[ARKLE BNB]</p>
+        <div class="links__container">
+          <a class="link" href="/feed">Home</a>
+        </div>
+      </nav>
+      <section class="blurb">
+        <h1 class="blurb__header">New Peep</h1>
+        <p class="blurb__text">
+          What would you like to say?
+        </p>
+      </section>
+      <div class="form__container">
+        <h3 class="form__header">Account Name....</h3>
+        <form class="form" action="/feed" method="POST">
+          <label class="form__label" for="content">Peep content</label
+          ><input class="form__input" type="text" name="content" />
+          <input class="form__input form__submit" type="submit" value="Submit" />
+        </form>
+      </div>
+    </header>
+  </body>
 </html>

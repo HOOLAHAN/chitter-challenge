@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <h1>Chitter</h1>
-    <% if session[:user_id] == nil %>
-      <a href="/login">Login to make a post</a>
-      <a href="/new_user">Create an account</a>
-    <% else %>
-      <a href="/feed/new">Post a new Peep</a><br />
-      <a href="/logout">Logout</a>
-    <% end %>
+  <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <body>
+      <header>
+        <nav>
+          <p>(logo)</p>
+          <p class= "header">Chitter</p>
+          <div class="links__container">
+            <% if session[:user_id] == nil %>
+              <a class="link" href="/login">Login to make a post</a>
+              <a class="link" href="/new_user">Create an account</a>
+            <% else %>
+              <a class="link" href="/feed/new">Post a new Peep</a><br />
+              <a class="link" href="/logout">Logout</a>
+            <% end %>
+           </div>
+        </nav>
   </head>
   <hr />
-  <body>
+  <body class= "body">
     <% @peeps.reverse.each do |peep| %>
-      <a href="/feed/<%= peep.id %>">View Peep</a>
       <p><%= peep.content %></p>
-      <p>Posted at <%= peep.timestamp.split(' ').last.split(':').slice(0,2).join(':') %> 
-      on <%= peep.timestamp.split(' ').first %></p>
+      <a class="link" href="/feed/<%= peep.id %>">
+        Posted at <%= @time %> 
+        on <%= @date %>
+      </a>
       <hr />
     <% end %>
   </body>

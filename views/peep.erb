@@ -1,13 +1,32 @@
-<!-- Example for GET /feed/1 -->
-
-<html>
-  <head></head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <body>
+      <header>
+        <nav>
+          <p>(logo)</p>
+          <p class= "header">Chitter</p>
+          <div class="links__container">
+              <a class="link" href="/feed">Home</a><br />
+              <a class="link" href="/logout">Logout</a>
+           </div>
+        </nav>
+  </head>
+  <hr />
+  <body class= "body">
     <h1><%= @peep.id %></h1>
     <p>
       <%= @peep.content %><br />
-      <%= @time %><br />
-      <%= @date %><br />
+      Posted at <%= @time %> 
+      on <%= @date %>
     </p>
   </body>
 </html>

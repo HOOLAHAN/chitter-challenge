@@ -58,6 +58,8 @@ class Application < Sinatra::Base
   get '/feed' do
     repo = PeepRepository.new
     @peeps = repo.all
+    @date = @peep.timestamp.split(' ').first
+    @time = @peep.timestamp.split(' ').last.split(':').slice(0,2).join(':')
     user_repo = UserRepository.new
     @users = user_repo.all
     return erb(:feed)

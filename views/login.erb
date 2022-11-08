@@ -1,19 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset=utf-8>
-  <title>Chitter</title>
-</head>
-<hr />
-<body>
-  <a href="/feed">Home</a>
-  <h1>Login Page</h1>
-  <h3>Please enter login details below:</h3>
-  <form method="POST" action="/login">
-    Email: <input type="text" name="email" />
-    Password: <input type="text" name="password" />
-    <input type="submit" />
-  </form>
-  <hr />
-</body>
+<html>
+  <head>
+    <title>Chitter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <p>[ARKLE BNB]</p>
+        <div class="links__container">
+          <a class="link" href="/feed">Home</a>
+        </div>
+      </nav>
+      <section class="blurb">
+        <h1 class="blurb__header">Login Page</h1>
+        <p class="blurb__text">
+          Please enter your login details
+        </p>
+      </section>
+      <div class="form__container">
+        <h3 class="form__header">Account Details</h3>
+        <form class="form" action="/login" method="POST">
+          <label class="form__label" for="email">Please enter email</label
+          ><input class="form__input" type="text" name="email" />
+          <label class="form__label" for="password">Please enter password</label
+          ><input class="form__input" type="text" name="password" />
+          <input class="form__input form__submit" type="submit" value="Submit" />
+        </form>
+      </div>
+    </header>
+  </body>
 </html>

@@ -9,24 +9,30 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <body>
-      <header>
-        <nav>
-          <p>(logo)</p>
-          <p class= "header">Chitter</p>
-          <div class="links__container">
-              <a class="link" href="/feed">Home</a><br />
-              <a class="link" href="/logout">Logout</a>
-           </div>
-        </nav>
   </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/"><img class="logo" src="/chitter.png" alt="logo" /></a>
+        <a href="/"><img class= "logo2" src="/chitter_title.png" alt="Chitter" /></a>
+        <div class="links__container">
+          <% if session[:user_id] == nil %>
+            <a class="nav__link" href="/login">Login to make a post</a>
+            <a class="nav__link" href="/new_user">Create an account</a>
+          <% else %>
+            <a class="nav__link" href="/feed/new">Post a new Peep</a><br />
+            <a class="nav__link" href="/logout">Logout</a>
+          <% end %>
+          </div>
+      </nav>
+  </header>
   <hr />
-  <body class= "body">
-    <h1><%= @peep.id %></h1>
+  <div class= "container__feed">
+    <p><%= @peep.id %></p>
     <p>
       <%= @peep.content %><br />
       Posted at <%= @time %> 
       on <%= @date %>
     </p>
-  </body>
+  </div>
 </html>

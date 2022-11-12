@@ -20,7 +20,7 @@ describe Application do
     it "should display the HTML content containing a list of peeps" do
       response = get('/feed')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<p>A peep with some content</p>')
+      expect(response.body).to include ('A peep with some content')
     end
   end
 
@@ -28,7 +28,7 @@ describe Application do
     it "should display the HTML content containing the user log in form" do
       response = get('/login')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<h3>Please enter login details below:</h3>')
+      expect(response.body).to include ('Please enter your login details')
     end
   end
 
@@ -47,8 +47,7 @@ describe Application do
     it "should display the HTML content containing a message to the user" do
       response = get('/login_error')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<h1>Login error!</h1>')
-      expect(response.body).to include ('<a href="/login">Return to login page</a><br />')
+      expect(response.body).to include ('<h1>Login Error!</h1>')
     end
   end
 
@@ -57,7 +56,7 @@ describe Application do
       response = get('/logout')
       expect(response.status).to eq (200)
       expect(response.body).to include ('<h1>Goodbye!</h1>')
-      expect(response.body).to include ('<a href="/login">Login</a>')
+      expect(response.body).to include ('<a class="link" href="/login">Login</a>')
     end
   end
 
@@ -65,8 +64,7 @@ describe Application do
     it "should display the HTML content containing the new peep form" do
       response = get('/feed/new')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<form action="/feed" method="POST">')
-      expect(response.body).to include ('<label>Write peep content</label>')
+      expect(response.body).to include ('What would you like to say?')
     end
   end
 
@@ -74,7 +72,6 @@ describe Application do
     it "should display the HTML content containing a single peep" do
     response = get('/feed/1')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<h1>1</h1>')
       expect(response.body).to include ('A peep with some content')
     end
   end
@@ -94,7 +91,7 @@ describe Application do
     it "should display the HTML content containing the create new user form" do
       response = get('/new_user')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<form action="/new_user" method="POST">')
+      expect(response.body).to include ('Please enter the following details to set up a new account')
     end
   end
 
@@ -102,7 +99,7 @@ describe Application do
     it "should display the HTML content containing the create new user form" do
       response = get('/new_user_added')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<h1>Account added - Welcome to Chitter!</h1>')
+      expect(response.body).to include ('Welcome to Chitter!')
     end
   end
 

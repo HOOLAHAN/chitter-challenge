@@ -9,31 +9,32 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <body>
-      <header>
-        <nav>
-          <p>(logo)</p>
-          <p class= "header">Chitter</p>
-          <div class="links__container">
-            <% if session[:user_id] == nil %>
-              <a class="link" href="/login">Login to make a post</a>
-              <a class="link" href="/new_user">Create an account</a>
-            <% else %>
-              <a class="link" href="/feed/new">Post a new Peep</a><br />
-              <a class="link" href="/logout">Logout</a>
-            <% end %>
-           </div>
-        </nav>
   </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/"><img class="logo" src="chitter.png" alt="logo" /></a>
+        <a href="/"><img class= "logo2" src="chitter_title.png" alt="Chitter" /></a>
+        <div class="links__container">
+          <% if session[:user_id] == nil %>
+            <a class="nav__link" href="/login">Login to make a post</a>
+            <a class="nav__link" href="/new_user">Create an account</a>
+          <% else %>
+            <a class="nav__link" href="/feed/new">Post a new Peep</a><br />
+            <a class="nav__link" href="/logout">Logout</a>
+          <% end %>
+          </div>
+      </nav>
+  </header>
   <hr />
-  <body class= "body">
+  <div class= "container__feed">
     <% @peeps.reverse.each do |peep| %>
       <p><%= peep.content %></p>
-      <a class="link" href="/feed/<%= peep.id %>">
-        Posted at <%= @time %> 
-        on <%= @date %>
+      <a class="date__link" href="/feed/<%= peep.id %>">
+        Posted at <%= peep.timestamp.split(' ').last.split(':').slice(0,2).join(':') %> 
+        on <%= peep.timestamp.split(' ').first %>
       </a>
       <hr />
     <% end %>
-  </body>
+  </div>
 </html>

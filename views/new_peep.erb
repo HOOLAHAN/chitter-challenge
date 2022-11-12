@@ -9,13 +9,15 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
     <header>
       <nav>
-        <p>[ARKLE BNB]</p>
+        <a href="/"><img class="logo" src="/chitter.png" alt="logo" /></a>
+        <a href="/"><img class="logo2" src="/chitter_title.png" alt="Chitter" /></a>
         <div class="links__container">
-          <a class="link" href="/feed">Home</a>
+          <a class="nav__link" href="/feed">Home</a>
         </div>
       </nav>
       <section class="blurb">
@@ -25,7 +27,6 @@
         </p>
       </section>
       <div class="form__container">
-        <h3 class="form__header">Account Name....</h3>
         <form class="form" action="/feed" method="POST">
           <label class="form__label" for="content">Peep content</label
           ><input class="form__input" type="text" name="content" />

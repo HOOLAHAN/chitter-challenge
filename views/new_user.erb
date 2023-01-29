@@ -13,33 +13,37 @@
     </head>
     <body>
       <header>
-        <nav>
+        <nav class="navbar">
           <a href="/"><img class="logo" src="/chitter.png" alt="logo" /></a>
           <a href="/"><img class= "logo2" src="chitter_title.png" alt="Chitter" /></a>
         <div class="links__container">
           <a class="nav__link" href="/feed">Home</a>
         </div>
       </nav>
-      <section class="blurb">
-        <h1 class="blurb__header">Create an account</h1>
-        <p class="blurb__text">
+      <center><section>
+        <h1>Create an account</h1>
+        <h2>
           Please enter the following details to set up a new account
-        </p>
-      </section>
-      <div class="form__container">
-        <h3 class="form__header">Account Details</h3>
+        </h2>
+      </section></center>
+      <center><div class="container">
+        <h2 class="form__header">Account Details</h2>
         <form class="form" action="/new_user" method="POST">
-          <label class="form__label" for="name">Please enter name</label
-          ><input class="form__input" type="text" name="name" />
-          <label class="form__label" for="email">Please enter email</label
-          ><input class="form__input" type="text" name="email" />
-          <label class="form__label" for="username">Please enter username</label
-          ><input class="form__input" type="text" name="username" />
-          <label class="form__label" for="password">Please enter password</label
-          ><input class="form__input" type="text" name="password" />
-          <input class="form__input form__submit" type="submit" value="Create" />
+          <label for="name">Please enter name</label>
+          <input type="text" name="name" />
+          </br>
+          <label  for="email">Please enter email</label>
+          <input type="text" name="email" />
+          </br>
+          <label for="username">Please enter username</label>
+          <input type="text" name="username" />
+          </br>
+          <label for="password">Please enter password</label>
+          <input type="text" name="password" />
+          </br>
+          <input type="submit" value="Create" />
         </form>
-      </div>
+      </div></center>
     </header>
   </body>
 </html>

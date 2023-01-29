@@ -13,29 +13,27 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="navbar">
         <a href="/"><img class="logo" src="/chitter.png" alt="logo" /></a>
         <a href="/"><img class= "logo2" src="chitter_title.png" alt="Chitter" /></a>
         <div class="links__container">
           <a class="nav__link" href="/feed">Home</a>
         </div>
       </nav>
-      <section class="blurb">
-        <h1 class="blurb__header">Login Page</h1>
-        <p class="blurb__text">
-          Please enter your login details
-        </p>
-      </section>
-      <div class="form__container">
-        <h3 class="form__header">Account Details</h3>
-        <form class="form" action="/login" method="POST">
-          <label class="form__label" for="email">Please enter email</label
-          ><input class="form__input" type="text" name="email" />
-          <label class="form__label" for="password">Please enter password</label
-          ><input class="form__input" type="text" name="password" />
-          <input class="form__input form__submit" type="submit" value="Submit" />
+      <center>
+        <h2>Please enter your login details</h2>
+      </center>
+      <center><div class="container">
+        <form class="container_info" action="/login" method="POST">
+          <label for="email">Please enter email:</label>
+          <input type="text" name="email" />
+          </br>
+          <label for="password">Please enter password:</label>
+          <input type="text" name="password" />
+          </br>
+          <input type="submit" value="Submit" />
         </form>
-      </div>
+      </div></center>
     </header>
   </body>
 </html>

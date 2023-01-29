@@ -13,26 +13,22 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="navbar">
         <a href="/"><img class="logo" src="/chitter.png" alt="logo" /></a>
         <a href="/"><img class="logo2" src="/chitter_title.png" alt="Chitter" /></a>
         <div class="links__container">
           <a class="nav__link" href="/feed">Home</a>
         </div>
       </nav>
-      <section class="blurb">
-        <h1 class="blurb__header">New Peep</h1>
-        <p class="blurb__text">
-          What would you like to say?
-        </p>
+      <center><section>
+        <h2>What would you like to say?</h2>
       </section>
-      <div class="form__container">
-        <form class="form" action="/feed" method="POST">
-          <label class="form__label" for="content">Peep content</label
-          ><input class="form__input" type="text" name="content" />
-          <input class="form__input form__submit" type="submit" value="Submit" />
+      <div class="container_info">
+        <form action="/feed" method="POST">
+          <input type="text" name="content" />
+          <input type="submit" value="Submit" />
         </form>
-      </div>
+      </div></center>
     </header>
   </body>
 </html>

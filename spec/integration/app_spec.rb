@@ -55,8 +55,8 @@ describe Application do
     it 'should display the HTML content containing a message to the user' do
       response = get('/logout')
       expect(response.status).to eq (200)
-      expect(response.body).to include ('<h1>Goodbye!</h1>')
-      expect(response.body).to include ('<a class="link" href="/login">Login</a>')
+      expect(response.body).to include ('<center><h1>Goodbye!</h1></center>')
+      expect(response.body).to include ('<a class="nav__link" href="/login">Login</a>')
     end
   end
 

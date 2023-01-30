@@ -14,13 +14,19 @@ A small Twitter clone that will allow the users to post messages to a public str
   - ````chitter_challenge_test````
 
 - Set up tables
+
 ````psql -h 127.0.0.1 chitter_challenge < users.sql````
+
 ````psql -h 127.0.0.1 chitter_challenge < peeps.sql````
+
 ````psql -h 127.0.0.1 chitter_challenge_test < users.sql````
+
 ````psql -h 127.0.0.1 chitter_challenge_test < peeps.sql````
 
 - Seed tables
+
 ````psql -h 127.0.0.1 chitter_challenge < seeds.sql````
+
 ````psql -h 127.0.0.1 chitter_challenge_test < seeds.sql````
 
 - Install dependencies:
